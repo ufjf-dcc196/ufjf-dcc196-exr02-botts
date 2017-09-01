@@ -3,4 +3,8 @@
     <string name="botao_calcular">Calcular</string>
     <string name="numero1">Numero1</string>
     <string name="numero2">Numero2</string>
+    <string name="botaosoma">+</string>
+    <string name="botaomenos">-</string>
+    <string name="botaomultiplicar">*</string>
+    <string name="botaodividiri">\\</string>
 </resources>

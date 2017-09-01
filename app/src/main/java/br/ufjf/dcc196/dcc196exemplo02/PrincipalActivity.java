@@ -12,7 +12,10 @@ public class PrincipalActivity extends AppCompatActivity {
     private EditText numero1;
     private EditText numero2;
     private TextView resultado;
-    private Button botaocalcular;
+    private Button botaoSoma;
+    private Button botaoSub;
+    private Button botaoProd;
+    private Button botaoDiv;
 
 
     @Override
@@ -28,26 +31,41 @@ public class PrincipalActivity extends AppCompatActivity {
         resultado = (TextView) findViewById(R.id.resultado);
 
         // 3- Procure os componentes de controle
-        botaocalcular = (Button) findViewById(R.id.calcular);
+        botaoSoma = (Button) findViewById(R.id.bSom);
+        botaoSub = (Button) findViewById(R.id.bSub);
+        botaoProd = (Button) findViewById(R.id.bProd);
+        botaoDiv = (Button) findViewById(R.id.bDiv);
 
         // 4- Configurar os ouvintes para eventos
-        Ouvinte ouvinteInstancia = new Ouvinte();
-        botaocalcular.setOnClickListener(ouvinteInstancia);
+        OuvinteOperacao ouvinteInstancia = new OuvinteOperacao();
+        botaoSoma.setOnClickListener(ouvinteInstancia);
+        botaoSub.setOnClickListener(ouvinteInstancia);
+        botaoProd.setOnClickListener(ouvinteInstancia);
+        botaoDiv.setOnClickListener(ouvinteInstancia);
 
 
 
     }
 
-    private class Ouvinte implements View.OnClickListener{
+    private class OuvinteOperacao implements View.OnClickListener{
 
         @Override
         public void onClick(View v) {
             Integer n1 = Integer.parseInt(numero1.getText().toString());
             Integer n2 = Integer.parseInt(numero2.getText().toString());
-
-            Integer soma = n1 + n2;
-
-            resultado.setText("A soma de "+n1+" e "+n2+" é:"+soma);
+            if(v == botaoSoma) {
+                Integer soma = n1 + n2;
+                resultado.setText("A soma de " + n1 + " e " + n2 + " é:" + soma);
+            }else if(v == botaoSub){
+                Integer sub = n1 - n2;
+                resultado.setText("A subtração de " + n1 + " e " + n2 + " é:" + sub);
+            }else if(v == botaoProd){
+                Integer prod = n1 * n2;
+                resultado.setText("O produto de " + n1 + " e " + n2 + " é:" + prod);
+            }else if(v == botaoDiv){
+                Integer div = n1 / n2;
+                resultado.setText("A divisao de " + n1 + " e " + n2 + " é:" + div);
+            }
         }
     }
 }
